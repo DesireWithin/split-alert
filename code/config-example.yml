@@ -1,0 +1,18 @@
+
+prometheusAlertUrl: http://prometheusalert.monitoring:8080/prometheusalert
+config:
+  prod:
+    url: https://open.xxx.cn/open-apis/bot/v2/hook/xxxx
+    key3: value3
+    key1: value1
+    key2: value2
+  int:
+    key4: https://open.xxx.cn/open-apis/bot/v2/hook/2
+    key3: value3
+    key1: value1
+    key2: value2
+  stg:
+    fsurl: https://open.xxx.cn/open-apis/bot/v2/hook/3
+    key3: value3
+    key1: value1
+    key2: value2

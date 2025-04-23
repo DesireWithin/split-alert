@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: split-alert
+  labels:
+    app: split-alert
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: split-alert
+  template:
+    metadata:
+      labels:
+        app: split-alert
+    spec:
+      containers:
+      - name: split-alert
+        image: your-image-repo/split-alert:0.1.2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: config-volume
+          mountPath: /opt/splitAlert/config
+        resources:
+          requests:
+            cpu: 200m
+            memory: 256Mi
+          limits:
+            cpu: "1"
+            memory: 1024Mi
+      imagePullSecrets: 
+        - name: alireg      
+      volumes:
+      - name: config-volume
+        configMap:
+          name: split-alert-config
